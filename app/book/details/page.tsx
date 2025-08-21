@@ -22,6 +22,7 @@ export default function BookingDetailsPage() {
   //     "formatLocalTime(time, timezone)",
   //     formatLocalTime(time, timezone)
   //   );
+  if (!time) return;
   const displayTime = `${format(new Date(time), "EEEE, MMMM do, yyyy")} at
                     ${formatLocalTime(time, timezone)} ${timezone}`;
   //   console.log("displayTime", displayTime);

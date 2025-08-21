@@ -123,9 +123,9 @@ export default function AvailabilityCalendar() {
         height="80vh"
         dayHeaderClassNames="bg-gray-100 text-gray-700 font-semibold text-sm py-2 "
         slotLabelClassNames="text-xs text-gray-500"
-        slotLaneContent={(arg) => (
-          <span className="text-gray-400 text-xs">{arg.time.text}</span>
-        )}
+        // slotLaneContent={(arg) => (
+        //   <span className="text-gray-400 text-xs">{arg.time?.text}</span>
+        // )}
       />
     </div>
   );

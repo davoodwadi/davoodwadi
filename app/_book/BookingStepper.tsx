@@ -18,9 +18,7 @@ export default function BookingStepper() {
         {/* Step 1: Calendar */}
         {step === 1 && (
           <div>
-            <AvailabilityCalendar
-              onSlotSelected={(selectedSlot: any) => setSlot(selectedSlot)}
-            />
+            <AvailabilityCalendar />
 
             {/* Next button (enabled only if slot is selected) */}
             <div className="flex justify-end mt-4">
@@ -41,19 +39,13 @@ export default function BookingStepper() {
         )}
 
         {/* Step 2: Confirmation + Details */}
-        {step === 2 && (
-          <ConfirmDetails
-            slot={slot}
-            onBack={() => setStep(1)}
-            onNext={() => setStep(3)}
-          />
-        )}
+        {step === 2 && <div></div>}
 
         {/* Step 3: Payment */}
-        {step === 3 && <StripeCheckoutStep />}
+        {step === 3 && <div></div>}
 
         {/* Step 4: Success */}
-        {step === 4 && <SuccessPage slot={slot} />}
+        {step === 4 && <div></div>}
       </div>
     </div>
   );

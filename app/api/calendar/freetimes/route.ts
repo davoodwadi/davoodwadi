@@ -16,7 +16,7 @@ export async function GET() {
   });
 
   const client = await auth.getClient();
-  const calendar = google.calendar({ version: "v3", auth: client });
+  const calendar = google.calendar({ version: "v3", auth });
 
   // ----- 90-day window -----
   const startTime = new Date();
