@@ -10,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { ArrowLeft } from "lucide-react";
 import { format, isSameDay } from "date-fns";
 import { formatInTimeZone } from "date-fns-tz";
+import { Suspense } from "react";
 
 export default function BookingDetailsPage() {
   const router = useRouter();
@@ -89,74 +90,84 @@ export default function BookingDetailsPage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-8">
-      <div className="w-full max-w-md">
-        {/* Back button */}
-        <Button variant="ghost" onClick={() => router.back()} className="mb-4">
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          Back
-        </Button>
+    <Suspense>
+      <div className="flex flex-col items-center justify-center min-h-screen p-8">
+        <div className="w-full max-w-md">
+          {/* Back button */}
+          <Button
+            variant="ghost"
+            onClick={() => router.back()}
+            className="mb-4"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Back
+          </Button>
 
-        <Card>
-          <CardHeader>
-            <CardTitle>Booking Details</CardTitle>
-            <div className="text-sm text-muted-foreground">
-              <p>
-                <strong>Time:</strong> {displayTime}
-              </p>
-            </div>
-          </CardHeader>
-          <CardContent>
-            <form onSubmit={handleSubmitBooking} className="space-y-4">
-              <div>
-                <Label className="pb-1" htmlFor="fullName">
-                  Full Name *
-                </Label>
-                <Input
-                  id="fullName"
-                  type="text"
-                  value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
-                  required
-                  placeholder="Enter your full name"
-                />
+          <Card>
+            <CardHeader>
+              <CardTitle>Booking Details</CardTitle>
+              <div className="text-sm text-muted-foreground">
+                <p>
+                  <strong>Time:</strong> {displayTime}
+                </p>
               </div>
+            </CardHeader>
+            <CardContent>
+              <form onSubmit={handleSubmitBooking} className="space-y-4">
+                <div>
+                  <Label className="pb-1" htmlFor="fullName">
+                    Full Name *
+                  </Label>
+                  <Input
+                    id="fullName"
+                    type="text"
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
+                    required
+                    placeholder="Enter your full name"
+                  />
+                </div>
 
-              <div>
-                <Label className="pb-1" htmlFor="email">
-                  Email Address *
-                </Label>
-                <Input
-                  id="email"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  placeholder="Enter your email address"
-                />
-              </div>
+                <div>
+                  <Label className="pb-1" htmlFor="email">
+                    Email Address *
+                  </Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    placeholder="Enter your email address"
+                  />
+                </div>
 
-              <div>
-                <Label className="pb-1" htmlFor="purpose">
-                  Purpose of Meeting (Optional)
-                </Label>
-                <Textarea
-                  id="purpose"
-                  value={purpose}
-                  onChange={(e) => setPurpose(e.target.value)}
-                  placeholder="Briefly describe the purpose of your meeting"
-                  rows={3}
-                />
-              </div>
+                <div>
+                  <Label className="pb-1" htmlFor="purpose">
+                    Purpose of Meeting (Optional)
+                  </Label>
+                  <Textarea
+                    id="purpose"
+                    value={purpose}
+                    onChange={(e) => setPurpose(e.target.value)}
+                    placeholder="Briefly describe the purpose of your meeting"
+                    rows={3}
+                  />
+                </div>
 
-              <Button type="submit" className="w-full" disabled={isSubmitting}>
-                {isSubmitting ? "Submitting..." : "Confirm Booking"}
-              </Button>
-            </form>
-          </CardContent>
-        </Card>
+                <Button
+                  type="submit"
+                  className="w-full"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Submitting..." : "Confirm Booking"}
+                </Button>
+              </form>
+            </CardContent>
+          </Card>
+        </div>
       </div>
-    </div>
+    </Suspense>
   );
 }
 
