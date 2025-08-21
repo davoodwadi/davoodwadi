@@ -15,6 +15,12 @@ export default function BookingDetailsPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
+  // Form state
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [purpose, setPurpose] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   // Get booking data from URL parameters
   const time = searchParams.get("time");
   const timezone = searchParams.get("timezone");
@@ -26,12 +32,6 @@ export default function BookingDetailsPage() {
   const displayTime = `${format(new Date(time), "EEEE, MMMM do, yyyy")} at
                     ${formatLocalTime(time, timezone)} ${timezone}`;
   //   console.log("displayTime", displayTime);
-
-  // Form state
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [purpose, setPurpose] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Redirect if no booking data
   useEffect(() => {
