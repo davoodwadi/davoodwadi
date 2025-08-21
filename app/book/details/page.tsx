@@ -33,7 +33,7 @@ export default function BookingDetailsPage() {
     displayTime = "";
   } else {
     displayTime = `${format(new Date(time), "EEEE, MMMM do, yyyy")} at
-                      ${formatLocalTime(time, timezone)} ${timezone}`;
+                      ${formatLocalTime(time, timezone || "")} ${timezone}`;
     //   console.log("displayTime", displayTime);
   }
 
