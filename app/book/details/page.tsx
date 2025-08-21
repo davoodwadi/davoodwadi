@@ -161,6 +161,6 @@ export default function BookingDetailsPage() {
 }
 
 // Helper function to format time with timezone
-const formatLocalTime = (isoString, timezone) => {
+const formatLocalTime = (isoString: string, timezone: string) => {
   return formatInTimeZone(new Date(isoString), timezone, "h:mm a");
 };
