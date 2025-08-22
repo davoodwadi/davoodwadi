@@ -1,4 +1,5 @@
 import { google } from "googleapis";
+import { toZonedTime } from "date-fns-tz";
 
 const client_email = process.env.GOOGLE_CLIENT_EMAIL;
 const private_key = process.env.GOOGLE_PRIVATE_KEY!.replace(/\\n/g, "\n"); //?.replace(/\\n/g, "\n");
@@ -85,13 +86,19 @@ function computeFreeSlotsForDay(
   const free: { start: string; end: string }[] = [];
 
   // Define 9 AM PST -> 12 PM PST
-  const start = new Date(
-    new Date(day).toLocaleString("en-US", { timeZone: "America/Los_Angeles" })
-  );
-  start.setHours(9, 0, 0, 0);
+  const timeZone = "America/Los_Angeles";
+  const dateStr = toDateString(day, timeZone); // "YYYY-MM-DD"
 
-  const end = new Date(start);
-  end.setHours(12, 0, 0, 0);
+  // Build `2024-06-03T09:00:00` in that zone and convert to UTC
+  const start = toZonedTime(`${dateStr}T09:00:00`, timeZone);
+  const end = toZonedTime(`${dateStr}T12:00:00`, timeZone);
+  // const start = new Date(
+  //   new Date(day).toLocaleString("en-US", { timeZone: "America/Los_Angeles" })
+  // );
+  // start.setHours(9, 0, 0, 0);
+
+  // const end = new Date(start);
+  // end.setHours(12, 0, 0, 0);
 
   let current = start;
 
