@@ -96,6 +96,7 @@ export default function BookingInterface() {
     async function loadAvailability() {
       const res = await fetch(freetimesEndpoint);
       const data = await res.json();
+      // console.log("data", data);
       const newEvents = [];
 
       Object.entries(data).forEach(([_, slots]) => {

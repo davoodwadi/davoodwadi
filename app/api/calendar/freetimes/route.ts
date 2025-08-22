@@ -55,6 +55,7 @@ export async function GET() {
     const dateStr = toDateString(day, "America/Los_Angeles");
 
     const freeBlocks = computeFreeSlotsForDay(busySlots, day);
+    // console.log("freeBlocks", freeBlocks);
 
     // 🔹 Break down each free block into 30min chunks
     const free30MinChunks = freeBlocks.flatMap((block) =>
@@ -72,6 +73,7 @@ export async function GET() {
     results[dateStr] = { free: free30MinChunks, busy };
   }
   //
+  console.log("results", results);
 
   return Response.json(results);
 }
@@ -92,6 +94,9 @@ function computeFreeSlotsForDay(
   // Build `2024-06-03T09:00:00` in that zone and convert to UTC
   const start = toZonedTime(`${dateStr}T09:00:00`, timeZone);
   const end = toZonedTime(`${dateStr}T12:00:00`, timeZone);
+  // console.log("busySlots", busySlots);
+  // console.log("start", start);
+  // console.log("end", end);
   // const start = new Date(
   //   new Date(day).toLocaleString("en-US", { timeZone: "America/Los_Angeles" })
   // );

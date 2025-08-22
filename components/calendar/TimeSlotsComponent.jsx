@@ -68,6 +68,8 @@ export default function TimeSlotsComponents(props) {
         isSameDay(new Date(event.start), props.selectedDate)
     ) || [];
 
+  console.log("freeSlotsForDay", freeSlotsForDay);
+
   return (
     <Card className="h-full w-full rounded-none">
       <CardHeader>
