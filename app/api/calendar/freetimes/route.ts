@@ -7,7 +7,7 @@ const calendarId = process.env.GOOGLE_CALENDAR_ID!;
 
 export async function GET() {
   //   console.log("GET WORKS");
-  console.log(client_email);
+  // console.log(client_email);
   const auth = new google.auth.GoogleAuth({
     credentials: {
       client_email: client_email,
@@ -73,7 +73,7 @@ export async function GET() {
     results[dateStr] = { free: free30MinChunks, busy };
   }
   //
-  console.log("results", results);
+  // console.log("results", results);
 
   return Response.json(results);
 }
@@ -88,15 +88,19 @@ function computeFreeSlotsForDay(
   const free: { start: string; end: string }[] = [];
 
   // Define 9 AM PST -> 12 PM PST
+  // const timeZone = "America/Los_Angeles";
   const timeZone = "America/Los_Angeles";
   const dateStr = toDateString(day, timeZone); // "YYYY-MM-DD"
-
+  // console.log("dateStr", dateStr);
   // Build `2024-06-03T09:00:00` in that zone and convert to UTC
-  const start = toZonedTime(`${dateStr}T09:00:00`, timeZone);
-  const end = toZonedTime(`${dateStr}T12:00:00`, timeZone);
+  // const start = toZonedTime(`${dateStr}T09:00:00`, timeZone);
+  // const end = toZonedTime(`${dateStr}T12:00:00`, timeZone);
+  // Create dates explicitly in the target timezone
+  const start = new Date(`${dateStr}T09:00:00-07:00`); // PST offset
+  const end = new Date(`${dateStr}T12:00:00-07:00`); // PST offset
   // console.log("busySlots", busySlots);
-  console.log("start", start);
-  console.log("end", end);
+  // console.log("start", start);
+  // console.log("end", end);
   // const start = new Date(
   //   new Date(day).toLocaleString("en-US", { timeZone: "America/Los_Angeles" })
   // );
