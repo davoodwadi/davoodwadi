@@ -95,8 +95,8 @@ function computeFreeSlotsForDay(
   const start = toZonedTime(`${dateStr}T09:00:00`, timeZone);
   const end = toZonedTime(`${dateStr}T12:00:00`, timeZone);
   // console.log("busySlots", busySlots);
-  // console.log("start", start);
-  // console.log("end", end);
+  console.log("start", start);
+  console.log("end", end);
   // const start = new Date(
   //   new Date(day).toLocaleString("en-US", { timeZone: "America/Los_Angeles" })
   // );
