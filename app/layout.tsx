@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Davood Wadi's Calendar",
   description: "Book appointments with Davood Wadi",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({

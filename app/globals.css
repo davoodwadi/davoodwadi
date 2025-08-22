@@ -172,3 +172,33 @@
   box-shadow: none !important;
   padding: 0 !important;
 }
+
+/* Custom calendar styles */
+.rdp-day_booked {
+  background-color: #fef2f2 !important;
+  color: #dc2626 !important;
+  text-decoration: line-through;
+}
+
+.rdp-day_available {
+  background-color: #f0fdf4 !important;
+  color: #059669 !important;
+  font-weight: 600;
+}
+
+.rdp-day_available:hover {
+  background-color: #dcfce7 !important;
+  color: #047857 !important;
+}
+
+.rdp-day_disabled {
+  background-color: #f9fafb !important;
+  color: #9ca3af !important;
+  cursor: not-allowed !important;
+}
+
+/* Weekend styling */
+.rdp-day[disabled] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
