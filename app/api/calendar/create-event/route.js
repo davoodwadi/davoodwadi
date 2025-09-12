@@ -85,6 +85,7 @@ Attendee: ${meeting.attendee.fullName} (${meeting.attendee.email})
         useDefault: false,
         overrides: [
           { method: "email", minutes: 24 * 60 }, // 24 hours before
+          { method: "email", minutes: 30 }, // 24 hours before
           { method: "popup", minutes: 15 }, // 15 minutes before
         ],
       },

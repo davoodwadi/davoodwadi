@@ -25,7 +25,7 @@ export default function CalendarComponent(props) {
             props.setSelectedDate(e);
             props.setSelectedTime("");
           }}
-          className="rounded-md border w-full"
+          className="rounded-md border mx-auto"
           modifiers={{
             booked: isFullyBooked,
           }}

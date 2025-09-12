@@ -22,6 +22,8 @@ export default function BookingSuccessPage() {
   const searchParams = useSearchParams();
   const bookingId = params.id;
   const sessionId = searchParams.get("session_id");
+  console.log("sessionId", sessionId);
+  console.log("bookingId", bookingId);
 
   const [bookingData, setBookingData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -43,7 +45,7 @@ export default function BookingSuccessPage() {
 
       try {
         if (sessionId) {
-          // Update booking status to confirmed
+          // Update booking status to confirmed in Redis
           await fetch(
             `${process.env.NEXT_PUBLIC_API_URL}/api/booking/${bookingId}`,
             {
