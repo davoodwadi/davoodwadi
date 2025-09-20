@@ -64,8 +64,8 @@ export default function CalendarComponent(props) {
   };
 
   return (
-    <Card className="h-full w-full rounded-none">
-      <CardContent className="pt-6">
+    <Card className=" h-full w-full rounded-none">
+      <CardContent className="flex justify-center ">
         <Calendar
           mode="single"
           selected={props.selectedDate}
@@ -80,13 +80,11 @@ export default function CalendarComponent(props) {
           }}
           modifiersClassNames={{
             booked:
-              "bg-red-200/50 text-red-500 m-2 rounded-md  dark:bg-red-900/50",
-            // "opacity-50 [&>button]:line-through [&>button]:text-muted-foreground",
-            // "[&>button]:line-through opacity-100",
+              "bg-red-200/50 text-red-500 m-1 md:m-2 rounded-md  dark:bg-red-900/50",
             available:
-              "bg-green-200/80 text-green-800 m-2 rounded-md font-bold dark:bg-green-900/80 dark:text-green-300",
-            today: "m-2",
-            disabled: "m-2",
+              "bg-green-200/80 text-green-800 m-1 md:m-2 rounded-md font-bold dark:bg-green-900/80 dark:text-green-300",
+            today: "m-1 md:m-2",
+            disabled: "m-1 md:m-2",
           }}
           disabled={(date) => {
             // Disable past dates, Sundays, and Saturdays

@@ -165,8 +165,8 @@ export default function BookingInterface() {
   const isConfirmDisabled = !selectedDate || !selectedTime;
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen md:h-[50vh] py-16 md:py-48 px-8">
-      <div className="flex flex-col md:flex-row items-center justify-center w-full">
+    <div className="flex flex-col items-center justify-center min-h-screen lg:h-[50vh] py-16 lg:py-48 px-8">
+      <div className="flex flex-col lg:flex-row items-center justify-center w-full">
         {/* Description Card with Suspense */}
         <Suspense fallback={<DescriptionSkeleton />}>
           <LazyDescriptionCard />
